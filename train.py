@@ -54,8 +54,8 @@ print('learning_rate: {}\ncrop_size: {}\ntrain_batch_size: {}\nval_batch_size: {
 # --- Set category-specific hyper-parameters  --- #
 if category == 'distort':
     num_epochs = 200
-    train_data_dir = '/content/drive/MyDrive/data/solar-big-bear-black/train/'
-    val_data_dir = '/content/drive/MyDrive/data/solar-big-bear-black/val/'
+    train_data_dir = '/content/drive/MyDrive/data/solar-big-bear-color/train/'
+    val_data_dir = '/content/drive/MyDrive/data/solar-big-bear-color/val/'
 elif category == 'dehaze':
     num_epochs = 10
     train_data_dir = './data/train/dehaze/'
@@ -131,7 +131,7 @@ loss_network.eval()
 if os.path.exists('./{}'.format(exp_name))==False:
     os.mkdir('./{}'.format(exp_name)) 
 
-val_data_dir = '/content/drive/MyDrive/data/solar-big-bear-black/val/'
+val_data_dir = '/content/drive/MyDrive/data/solar-big-bear-color/val/'
 val_data_loader = DataLoader(ValData(val_data_dir), batch_size=val_batch_size, shuffle=False, num_workers=8)
 
 ### area comment ends
