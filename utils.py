@@ -6,7 +6,7 @@ import torch
 import torch.nn.functional as F
 import torchvision.utils as utils
 from math import log10
-from skimage import measure
+from skimage.metrics import structural_similarity as compare_ssim
 
 import os
 def to_psnr(pred_image, gt):
@@ -25,7 +25,8 @@ def to_ssim_skimage(pred_image, gt):
 
     pred_image_list_np = [pred_image_list[ind].permute(0, 2, 3, 1).data.cpu().numpy().squeeze() for ind in range(len(pred_image_list))]
     gt_list_np = [gt_list[ind].permute(0, 2, 3, 1).data.cpu().numpy().squeeze() for ind in range(len(pred_image_list))]
-    ssim_list = [measure.compare_ssim(pred_image_list_np[ind],  gt_list_np[ind], data_range=1, multichannel=True) for ind in range(len(pred_image_list))]
+    #ssim_list = [measure.compare_ssim(pred_image_list_np[ind],  gt_list_np[ind], data_range=1, multichannel=True) for ind in range(len(pred_image_list))]
+    ssim_list = [compare_ssim(pred_image_list_np[ind], gt_list_np[ind], data_range=1, multichannel=True) for ind in range(len(pred_image_list))]
 
     return ssim_list
 
