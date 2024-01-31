@@ -131,7 +131,7 @@ loss_network.eval()
 if os.path.exists('./{}'.format(exp_name))==False:
     os.mkdir('./{}'.format(exp_name)) 
 
-val_data_dir = '/media/labuser/sdd/ICIP_Turbulence_files/cropped_256/'
+val_data_dir = '/content/drive/MyDrive/data/solar-big-bear-black/val/'
 val_data_loader = DataLoader(ValData(val_data_dir), batch_size=val_batch_size, shuffle=False, num_workers=8)
 
 ### area comment ends
